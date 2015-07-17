@@ -47,7 +47,8 @@ Router::scope('/', function ($routes) {
      * its action called 'display', and we pass a param to select the view file
      * to use (in this case, src/Template/Pages/home.ctp)...
      */
-    $routes->connect('/', ['controller' => 'Pages', 'action' => 'display', 'home']);
+    // $routes->connect('/', ['controller' => 'Pages', 'action' => 'display', 'home']);
+    $routes->connect('/', ['controller' => 'Products']);
 
     /**
      * ...and connect the rest of 'Pages' controller's URLs.
@@ -71,7 +72,16 @@ Router::scope('/', function ($routes) {
      * routes you want in your application.
      */
     $routes->fallbacks('InflectedRoute');
+    $routes->extensions(['xml','json']);
+    $routes->resources('Products');
 });
+
+// Routes::scope('/api', function($routes){
+//     $routes->extensions(['xml','json']);
+//     $routes->resources('Products');
+
+// });
+
 
 /**
  * Load all plugin routes.  See the Plugin documentation on

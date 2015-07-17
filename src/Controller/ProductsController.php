@@ -12,6 +12,11 @@ use Cake\ORM\TableRegistry;
 class ProductsController extends AppController
 {
 
+    public function initialize(){
+        parent::initialize();
+        $this->loadComponent('RequestHandler');
+
+    }
     /**
      * Index method
      *
@@ -51,18 +56,18 @@ class ProductsController extends AppController
             $product = $this->Products->patchEntity($product, $this->request->data);
             
             //add image entry to database
-            $images = TableRegistry::get('Images');
-            $image = $images->newEntity();
-            $data = $this->request->data['submittedImage'];
-            $data1['image'] = $data['name'];            
-            $data1['image_path'] = $this->wwwRoot;
+            // $images = TableRegistry::get('Images');
+            // $image = $images->newEntity();
+            // $data = $this->request->data['submittedImage'];
+            // $data1['image'] = $data['name'];            
+            // $data1['image_path'] = $this->wwwRoot;
             
-            if ( $images->save($image)) {
-            	$this->Flash->success(__('Image uploaded'));
-            }
-            else {
-                $this->Flash->success(__('Image upload failed'));
-            }
+            // if ( $images->save($image)) {
+            // 	$this->Flash->success(__('Image uploaded'));
+            // }
+            // else {
+            //     $this->Flash->success(__('Image upload failed'));
+            // }
             
             //upload the file to the webroot folder
             
